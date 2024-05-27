@@ -5,7 +5,15 @@ description = ""
 authors = [
     {name = "fathurifki", email = "rifkifathu@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "django>=4.2.13",
+    "psycopg2-binary>=2.9.9",
+    "django-tailwind>=3.4.0",
+]
+
+[tool.pdm.scripts]
+tw-watch = "bunx tailwindcss -i ./app.css -o ./src/todo/static/tailwind.css --watch"
+
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
