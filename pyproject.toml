@@ -1,20 +1,25 @@
 [project]
-name = ""
-version = ""
+name = "todo_app"
+version = "1.0.0"
 description = ""
 authors = [
     {name = "fathurifki", email = "rifkifathu@gmail.com"},
 ]
+
+requires-python = ">=3.10"
+
 dependencies = [
-    "django>=4.2.13",
+    "django==4.2.13",
+    "django-tailwind==3.4.0",
+    "psycopg>=3.1.19",
+    "psycopg-binary>=3.1.19",
     "psycopg2-binary>=2.9.9",
-    "django-tailwind>=3.4.0",
+    "django-environ>=0.11.2",
 ]
 
 [tool.pdm.scripts]
 tw-watch = "bunx tailwindcss -i ./app.css -o ./src/todo/static/tailwind.css --watch"
 
-requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}
 

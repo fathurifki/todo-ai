@@ -1,6 +1,35 @@
-<html>
-<body>
-    <h1>Hello World List BRO </h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block content %}
 
+<h3 class="my-5">Welcome to Your Todo List</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form hx-post="{% url 'create_todo' %}" hx-target="#todoList" hx-swap="innerHTML" class="mx-auto">
+                {% csrf_token %}
+                <div class="mb-3 flex flex-col gap-2 ">
+                    <label for="todoText" class="form-label">Enter your todo here: </label>
+                    <input type="text" name="title" class="form-control mb-2" id="todoText" required>
+                    <textarea name="description" class="form-control mb-2" id="todoDescription" required></textarea>
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div id="todoList">
+                {% include 'list/partials/list_todo.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_script %}
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    })
+</script>
+{% endblock %}

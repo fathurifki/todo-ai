@@ -1,0 +1,8 @@
+{% for todo in todos %}
+    <div id="todo-{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
+        <div><label>Title</label>: {{ todo.title }}</div>
+        <div><label>Description</label>: {{ todo.description }}</div>
+        <button hx-get="{% url 'get_detail_todo' todo.id %}" class="btn btn-primary">Click To Edit</button>
+        <button hx-delete="{% url 'delete_todo' todo.id %}" hx-target="#todoList" hx-swap="innerHTML" class="btn btn-danger">Delete</button>
+    </div>
+{% endfor %}

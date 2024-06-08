@@ -1,0 +1,20 @@
+{% load static %}
+
+{% block content %}
+<h1>Edit Todo</h1>
+<div>
+    <form hx-post="{% url 'edit_todo' todo.id %}" hx-target="#todoList" hx-swap="innerHTML">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{ todo.title }}">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" class="form-control">{{ todo.description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save here</button>
+        <a href="{% url 'todo_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

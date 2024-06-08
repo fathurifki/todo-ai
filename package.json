@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "watch": "tailwindcss -i ./app.css -o ./src/todo/static/todo/tailwind.css --watch --minify",
+    "build": "tailwindcss -i ./app.css -o ./src/todo/static/todo/tailwind.css --minify"
+  },
   "dependencies": {},
   "devDependencies": {
     "tailwindcss": "^3.4.3"
