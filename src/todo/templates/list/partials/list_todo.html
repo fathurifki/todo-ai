@@ -1,8 +1,17 @@
 {% for todo in todos %}
-    <div id="todo-{{ todo.id }}" hx-target="this" hx-swap="outerHTML">
-        <div><label>Title</label>: {{ todo.title }}</div>
-        <div><label>Description</label>: {{ todo.description }}</div>
-        <button hx-get="{% url 'get_detail_todo' todo.id %}" class="btn btn-primary">Click To Edit</button>
-        <button hx-delete="{% url 'delete_todo' todo.id %}" hx-target="#todoList" hx-swap="innerHTML" class="btn btn-danger">Delete</button>
+<div class="flex border p-[10px] rounded-md items-center justify-between" id="todo-{{ todo.id }}" hx-target="this"
+    hx-swap="outerHTML">
+    <div>
+        <div class="{% if  todo.accomplished %}line-through{% endif %}"><span>Title</span>: {{ todo.title }}</div>
+        <div class="{% if  todo.accomplished %}line-through{% endif %}"><span>Description</span>: {{ todo.description }}
+        </div>
     </div>
+    <div class="flex gap-2">
+        <button {% if todo.accomplished %}disabled{% endif %} hx-post="{% url 'accomplished_task' todo.id%}"
+            hx-target="#todoList" hx-swap="innerHTML" class="btn btn-primary">Accomplished</button>
+        <button {% if todo.accomplished %}disabled{% endif %} hx-get="{% url 'get_detail_todo' todo.id %}" class="btn btn-primary">Click To Edit</button>
+        <button hx-delete="{% url 'delete_todo' todo.id %}" hx-target="#todoList" hx-swap="innerHTML"
+            class="btn btn-danger">Delete</button>
+    </div>
+</div>
 {% endfor %}

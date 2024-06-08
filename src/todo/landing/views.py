@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth import get_user_model, authenticate, login as auth_login
+from django.contrib.auth import get_user_model, authenticate, login as auth_login, logout
 from .forms import UserCreationForm
 from django.shortcuts import redirect
 from django.db import connection
@@ -31,6 +31,7 @@ def register(request):
             return  render(request, 'register/index.html', {'form': form})
     else:
         form = UserCreationForm()
+        request.session.flush()
         return render(request, 'register/index.html', {'form': form})
 
 def login(request):
@@ -55,5 +56,12 @@ def login(request):
     elif request.method == 'GET':
         if (request.user.is_authenticated):
             return redirect('todos/list')
+        
+    return render(request, 'login/index.html')
 
+def logout_user(request):
+    if request.method == 'GET':
+        logout(request)
+        request.session.flush()
+        return redirect('login')
     return render(request, 'login/index.html')

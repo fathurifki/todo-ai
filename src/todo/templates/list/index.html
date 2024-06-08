@@ -3,22 +3,23 @@
 {% block title %} Home {% endblock %}
 {% block content %}
 
-<h3 class="my-5">Welcome to Your Todo List</h3>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
+<h3 class="my-5">What's up ?, List your todos here</h3>
+<div class="flex flex-col w-full">
+    <div class="flex flex-col">
+        <div class="w-1/2">
             <form hx-post="{% url 'create_todo' %}" hx-target="#todoList" hx-swap="innerHTML" class="mx-auto">
                 {% csrf_token %}
                 <div class="mb-3 flex flex-col gap-2 ">
                     <label for="todoText" class="form-label">Enter your todo here: </label>
                     <input type="text" name="title" class="form-control mb-2" id="todoText" required>
+                    <label for="todoDescription" class="form-label">Description: </label>
                     <textarea name="description" class="form-control mb-2" id="todoDescription" required></textarea>
                     <button type="submit" class="btn btn-success">Add</button>
                 </div>
             </form>
         </div>
-        <div class="col-md-6">
-            <div id="todoList">
+        <div class="">
+            <div id="todoList" class="flex flex-col gap-[1rem]">
                 {% include 'list/partials/list_todo.html' %}
             </div>
         </div>

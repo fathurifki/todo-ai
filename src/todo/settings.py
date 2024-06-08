@@ -21,17 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
     DEBUG=(bool, False),
-    SECRET=(str, "django-insecure-u#4bba-6u#(rey_k5w3a#rhaw$q(7ivt*_i@8!3q5j5zyfb1^!"),
-    POSTGRES_HOST=(str, "localhost"),
-    POSTGRES_USER=(str, "postgres"),
-    POSTGRES_PASSWORD=(str, "postgres"),
-    POSTGRES_DB=(str, "django_modular"),
-    POSTGRES_PORT=(str, "5432"),
+    SECRET=(str, ""),
+    PG_HOST=(str, "localhost"),
+    POSTGRES_USER=(str, ""),
+    POSTGRES_PASSWORD=(str, ""),
+    POSTGRES_DB=(str, ""),
+    POSTGRES_PORT=(str, ""),
     ALLOWED_HOSTS=(list, ["*"]),
-    CSRF_TRUSTED_ORIGINS=(list, ["http://0.0.0.0:8000"])
+    # CSRF_TRUSTED_ORIGINS=(list, ["http://0.0.0.0:8000"])
 )
 
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -74,7 +74,10 @@ ROOT_URLCONF = 'todo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "todo" / "templates"],
+        'DIRS': [
+            BASE_DIR / "todo" / "templates",
+            BASE_DIR / "todo" / "landing" / "templates",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,9 +100,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('POSTGRES_DB'),
+        'HOST': env('PG_HOST'),
         'USER': env('POSTGRES_USER'),
         'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': env('POSTGRES_HOST'),
         'PORT': env('POSTGRES_PORT'),
     }
 }

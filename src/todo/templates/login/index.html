@@ -1,19 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'base_without_header.html' %}
 {% load static %}
-
 {% block content %}
-<form action="/login" method="POST">
+<form class="border flex flex-col gap-4 items-center justify-center h-full" action="/login" method="POST">
     {% csrf_token %}
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <div>
-        <button type="submit">Login</button>
+    <div class="flex flex-col gap-4 border p-4 rounded-md">
+        <div class="flex flex-col gap-2">
+            <label for="email">Email:</label>
+            <input class="border p-2 rounded-md" type="email" id="email" name="email" required>
+        </div>
+        <div class="flex flex-col gap-2">
+            <label for="password">Password:</label>
+            <input class="border p-2 rounded-md" type="password" id="password" name="password" required>
+        </div>
+        <div class="flex items-center justify-center">
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md">Login</button>
+        </div>
+        <span>Don't have an account? <a href="{% url 'register' %}" class="text-blue-500">Register</a></span>
     </div>
 </form>
 {% endblock %}
