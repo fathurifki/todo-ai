@@ -147,6 +147,7 @@ STATICFILES_DIRS = [
     # "/Users/cfe/Dev/django-tailwindcss/src/static",
     BASE_DIR / "todo" / "static"
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
