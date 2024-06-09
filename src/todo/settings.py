@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
     DEBUG=(bool, False),
-    SECRET=(str, "django-insecure-l6aw$vcwr7k4ec=ktk7yv^zu^-egkq9*!d0r7-1g3dxasi-s$e"),
+    SECRET=(str, ""),
     PG_HOST=(str, ""),
-    POSTGRES_USER=(str, "postgres"),
-    POSTGRES_PASSWORD=(str, "jojo1234"),
-    POSTGRES_DB=(str, "todo_db"),
-    POSTGRES_PORT=(str, "5432"),
+    POSTGRES_USER=(str, ""),
+    POSTGRES_PASSWORD=(str, ""),
+    POSTGRES_DB=(str, ""),
+    POSTGRES_PORT=(str, ""),
     ALLOWED_HOSTS=(list, ["*"]),
     CSRF_TRUSTED_ORIGINS=(list, ["http://0.0.0.0:8000"])
 )
