@@ -28,7 +28,7 @@ env = environ.Env(
     POSTGRES_DB=(str, ""),
     POSTGRES_PORT=(str, ""),
     ALLOWED_HOSTS=(list, ["*"]),
-    # CSRF_TRUSTED_ORIGINS=(list, ["http://0.0.0.0:8000"])
+    CSRF_TRUSTED_ORIGINS=(list, ["http://0.0.0.0:8000"])
 )
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -41,8 +41,10 @@ SECRET_KEY = env('SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = env('CSRF_TRUSTED_ORIGINS')
 
 # Application definition
 
