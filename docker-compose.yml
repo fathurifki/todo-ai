@@ -12,7 +12,7 @@ services:
       PG_HOST: db
       POSTGRES_PORT: 5432
       SECRET: django-insecure-l6aw$vcwr7k4ec=ktk7yv^zu^-egkq9*!d0r7-1g3dxasi-s$e
-      DEBUG: True,
+      DEBUG: False
       ALLOWED_HOSTS: todo-django.pomerain.org
       CSRF_TRUSTED_ORIGINS: https://todo-django.pomerain.org
     volumes:
