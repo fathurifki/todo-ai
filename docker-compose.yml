@@ -11,8 +11,9 @@ services:
       POSTGRES_PASSWORD: jojo1234
       PG_HOST: db
       POSTGRES_PORT: 5432
-      SECRET_KEY: django-insecure-l6aw$vcwr7k4ec=ktk7yv^zu^-egkq9*!d0r7-1g3dxasi-s$e
-      DEBUG: True
+      SECRET: django-insecure-l6aw$vcwr7k4ec=ktk7yv^zu^-egkq9*!d0r7-1g3dxasi-s$e
+      DEBUG: True,
+      ALLOWED_HOSTS: localhost,127.0.0.1
     volumes:
       - shared-volume:/app/src/static
       - staticfiles:/app/staticfiles 
