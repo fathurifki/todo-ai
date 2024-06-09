@@ -17,7 +17,6 @@ services:
       CSRF_TRUSTED_ORIGINS: https://todo-django.pomerain.org
     volumes:
       - shared-volume:/app/src/static
-      - staticfiles:/app/staticfiles 
     depends_on:
       - db
   proxy:
@@ -38,4 +37,3 @@ services:
 
 volumes:
   shared-volume:
-  staticfiles:
