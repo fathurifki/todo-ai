@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      POSTGRES_DB: todo_db
+      POSTGRES_DB: todos_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: jojo1234
       PG_HOST: db
@@ -32,7 +32,7 @@ services:
     image: postgres
     environment:
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: todo_db
+      POSTGRES_DB: todos_db
     ports:
       - "5432:5432"
 

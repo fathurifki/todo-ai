@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',
     'todo.todos',
-    'todo.landing',
+    # 'todo.landing',
     'todo.subscriptions',
 ]
 
@@ -156,7 +156,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'landing.User'
+# AUTH_USER_MODEL = 'landing.User'
 
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "/"
